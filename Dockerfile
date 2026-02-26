@@ -1,7 +1,13 @@
 FROM python:3.11-slim
+
 WORKDIR /app
+
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+
 COPY . .
-ENTRYPOINT ["python", "main.py"]
-CMD ["--input", "eval/eval_dataset.json", "--batch", "--output", "output/results.json"]
+
+EXPOSE 8000
+
+# Default: run API server
+CMD ["uvicorn", "app.api:app", "--host", "0.0.0.0", "--port", "8000"]

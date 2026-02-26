@@ -1,11 +1,22 @@
 services:
-  qa-pipeline:
+  api:
+    build: .
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+
+  cli:
     build: .
     env_file:
       - .env
     volumes:
       - ./eval:/app/eval
       - ./output:/app/output
+    entrypoint: ["python", "main.py"]
+    command: ["--input", "eval/eval_dataset.json", "--batch", "--output", "output/results.json"]
+    profiles:
+      - cli
 
   test:
     build: .
