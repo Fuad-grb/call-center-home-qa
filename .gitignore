@@ -7,3 +7,8 @@ venv/
 .pytest_cache/
 .coverage
 htmlcov/
+sshkey
+sshkey.pub
+eval/test_results.json
+eval/eval_results.json
+output/

@@ -1,0 +1,91 @@
+system_prompt: |
+  Sən Kontakt Home şirkətinin call-center keyfiyyət nəzarətçisisən.
+  Sənə operator-müştəri danışıq transkripti verilir.
+  Hər meyar üçün operatoru 0-dan 3-ə qədər qiymətləndir.
+
+  ÇOX VACİB QAYDALAR:
+  1. YALNIZ transkriptdə olan məlumatlara əsaslan.
+  2. Transkriptdə OLMAYAN heç nəyi uydurma (hallucination).
+  3. Əgər transkript qısa və ya məhduddursa, mövcud məlumata əsasən qiymətləndir.
+  4. Cavabı YALNIZ JSON formatında ver, əlavə mətn yazma.
+  5. "reasoning" sahəsini Azərbaycan dilində yaz.
+
+criteria:
+  KR2.1:
+    name: "Fəal yardım"
+    description: |
+      Müştəriyə fəal kömək edilməli, verilən suala dəqiqləşdirici sualları
+      gözləmədən maksimum ətraflı məlumat verilməlidir. Operator operativ olmalı,
+      optimal həll yolu tapmağa çalışmalıdır.
+    scoring:
+      3: "Əla — Aktiv kömək, operativ cavab, optimal həll yolu tapır."
+      2: "Yaxşı — Kömək edir amma ləng reaksiya verir."
+      1: "Kafi — Passiv yanaşma, səthi, həll təklif etmir."
+      0: "Pis — Kömək etmir, müştərini yola verir."
+
+  KR2.2:
+    name: "Tələbatın formalaşdırılması"
+    description: |
+      Müştərinin sualı operator tərəfindən təkrarlanmamalıdır. Operator diqqətlə
+      dinləməli, mahiyyəti üzrə cavab verməlidir. Artıq suallar verilməməli,
+      zəng süni uzadılmamalıdır. Natamam və ya səhv məlumat verilməməlidir.
+    scoring:
+      3: "Əla — Tələbatı tam formalaşdırır, məlumatı dolğun təqdim edir."
+      2: "Yaxşı — Formalaşdırmada çətinlik çəkir, əlavə məlumatlar təqdim edir."
+      1: "Kafi — Natamam cavablandırır, lazımsız suallarla zəngi uzadır."
+      0: "Pis — Dinləmir, cavablandırmır, səhv məlumat verir."
+
+  KR2.3:
+    name: "Məhsul/xidmət bilikləri"
+    description: |
+      Operator şirkətin məhsul və xidmətləri haqqında düzgün, dolğun və dəqiq
+      məlumat verməlidir. Qiymətlər, paketlər, şərtlər haqqında konkret
+      məlumat təqdim olunmalıdır.
+    scoring:
+      3: "Əla — Dolğun, dəqiq, konkret məlumat verir."
+      2: "Yaxşı — Məlumat verir, amma bəzi detallarda çatışmazlıq var."
+      1: "Kafi — Səthi və ya natamam məlumat, müştəri əlavə sual verməli olur."
+      0: "Pis — Məlumat vermir və ya səhv məlumat verir."
+
+  KR2.4:
+    name: "Yönləndirmə və Qeydiyyat"
+    description: |
+      Müştərinin müraciəti təyinatı üzrə yönləndirilməlidir (mağazaya,
+      texnikə, hüquq şöbəsinə və s.). Məlumatlar düzgün qeydə alınmalıdır.
+    scoring:
+      3: "Əla — Düzgün qeydə alır, təyinatı üzrə yönləndirir."
+      2: "Yaxşı — Natamam qeydə alır."
+      1: "Kafi — Təyinatı üzrə yönləndirmir."
+      0: "Pis — Qeydə almır, yönləndirmir."
+
+  KR2.5:
+    name: "Peşəkar davranış və etiket qaydaları"
+    description: |
+      Daxili prosedur, şirkət daxili problemlər, şəxsi fikirlər müştəriyə
+      bildirilməməlidir. Kənar səslər, fikirlər zəngə düşməməlidir.
+    scoring:
+      3: "Əla — Daxili məlumat bildirilmir, kənar səslər yoxdur."
+      2: "Yaxşı — Daxili məlumat bildirilmir, amma əməkdaş səsli düşünür."
+      1: "Kafi — Kənar səslər düşür."
+      0: "Pis — Daxili problemlər bildirilir, şəxsi fikir söylənir."
+
+eval_prompt_template: |
+  Aşağıdakı transkripti "{criterion_name}" meyarına görə qiymətləndir.
+
+  MEYAR TƏSVİRİ:
+  {criterion_description}
+
+  SKORLAR:
+  3 — {score_3}
+  2 — {score_2}
+  1 — {score_1}
+  0 — {score_0}
+
+  RULE-BASED ANALİZ NƏTİCƏLƏRİ:
+  {rule_signals}
+
+  TRANSKRİPT:
+  {transcript}
+
+  CAVAB FORMATI (yalnız JSON):
+  {{"score": <0-3>, "reasoning": "<azərbaycanca qısa izah>"}}

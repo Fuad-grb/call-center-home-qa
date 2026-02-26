@@ -1,0 +1,14 @@
+services:
+  qa-pipeline:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - ./eval:/app/eval
+      - ./output:/app/output
+
+  test:
+    build: .
+    command: python -m pytest tests/ -v --tb=short
+    profiles:
+      - test
