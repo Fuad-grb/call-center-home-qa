@@ -1,0 +1,352 @@
+[
+  {
+    "dataset_id": "001_ideal_sales",
+    "criteria": {
+      "KR2.1": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Operator müştəriyə fəal kömək edir, operativ cavab verir və optimal həll yolu tapmağa çalışır."
+      },
+      "KR2.2": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Operator müştərinin sualını diqqətlə dinləyib, mahiyyəti üzrə cavab verib, artıq suallar vermədən və zəngi süni uzatmadan sifarişi qeydə alıb."
+      },
+      "KR2.3": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Operator müştəriyə konkret rəqəmsal məlumat verib, paketin qiymətini və tərkibini dəqiq izah edib. [Rule: Operator konkret rəqəmsal məlumat verib]"
+      },
+      "KR2.4": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Operator müştərinin müraciətini təyinatı üzrə yönləndirib, sifarişini qeydə alıb və lazımi məlumatları düzgün şəkildə qeydə alıb. [Rule: Yönləndirmə/qeydiyyat sözləri: ['texnik', 'qeydə alıram', 'sifarişiniz', 'nömrəniz']]"
+      },
+      "KR2.5": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Operator daxili məlumatları müştəriyə bildirmir, kənar səslər yoxdur və peşəkar şəkildə danışıq aparır."
+      }
+    }
+  },
+  {
+    "dataset_id": "002_ideal_technical",
+    "criteria": {
+      "KR2.1": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Operator müştəriyə fəal kömək edib, verilən suala dəqiqləşdirici sualları gözləmədən maksimum ətraflı məlumat verib, operativ olub, optimal həll yolu tapıb."
+      },
+      "KR2.2": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Operator müştərinin sualını diqqətlə dinləyib, mahiyyəti üzrə cavab verib, lazımsız suallar vermədən və zəngi uzatmadan problemi həll edib."
+      },
+      "KR2.3": {
+        "expected": 3,
+        "predicted": 1,
+        "exact": false,
+        "reasoning": "Operator müştərinin problemi ilə bağlı konkret həll yolunu təqdim etsə də, şirkətin məhsul və xidmətləri haqqında məlumat vermir. [Rule: Operator konkret rəqəmsal məlumat verib]"
+      },
+      "KR2.4": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Müştərinin müraciəti texniki dəstəyə yönləndirilib və operator tərəfindən düzgün qeydə alınıb. [Rule: Yönləndirmə/qeydiyyat sözləri: ['texnik']]"
+      },
+      "KR2.5": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Operator daxili məlumatları müştəriyə bildirmir, kənar səslər yoxdur və peşəkar şəkildə danışıq aparır."
+      }
+    }
+  },
+  {
+    "dataset_id": "003_internal_leak_critical",
+    "criteria": {
+      "KR2.1": {
+        "expected": 1,
+        "predicted": 0,
+        "exact": false,
+        "reasoning": "Operator müştəriyə fəal kömək etmədi, problemi həll etmək əvəzinə şirkətin böhran içində olduğunu bildirdi və müştərini başqa operatora keçməyə məcbur etdi."
+      },
+      "KR2.2": {
+        "expected": 1,
+        "predicted": 0,
+        "exact": false,
+        "reasoning": "Operator müştərinin sualına cavab vermək əvəzinə, şirkətin daxili problemlərindən danışır və müştərinin problemini həll etməyə çalışmır."
+      },
+      "KR2.3": {
+        "expected": 1,
+        "predicted": 0,
+        "exact": false,
+        "reasoning": "Operator müştərinin problemi ilə əlaqədar heç bir konkret və dəqiq məlumat vermədi, əvəzində şirkətin daxili problemlərindən danışdı."
+      },
+      "KR2.4": {
+        "expected": 2,
+        "predicted": 1,
+        "exact": false,
+        "reasoning": "Operator müştərinin problemini həll etmək əvəzinə, şirkətin vəziyyəti haqqında danışır və yönləndirmə aparır, lakin təyinatı üzrə yönləndirmir. [Rule: Yönləndirmə/qeydiyyat sözləri: ['texnik', 'rəhbər']]"
+      },
+      "KR2.5": {
+        "expected": 0,
+        "predicted": 0,
+        "exact": true,
+        "reasoning": "Operator daxili prosedur/problemləri müştəriyə bildirib"
+      }
+    }
+  },
+  {
+    "dataset_id": "004_pii_leak_protected",
+    "criteria": {
+      "KR2.1": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Operator müştəriyə fəal kömək edir, operativ cavab verir və optimal həll yolu tapmağa çalışır. Müştərinin təhlükəsizliyini düşünərək, kart məlumatlarını telefonda deməməsini xahiş edir və təhlükəsiz ödəniş üçün link göndərməyi təklif edir."
+      },
+      "KR2.2": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Operator müştərinin sualını diqqətlə dinləyib, mahiyyəti üzrə cavab verib, təhlükəsiz ödəniş variantı təklif edib və lazımsız suallar vermədən zəngi effektiv şəkildə idarə edib."
+      },
+      "KR2.3": {
+        "expected": 3,
+        "predicted": 0,
+        "exact": false,
+        "reasoning": "Operator müştəriyə şirkətin məhsul və xidmətləri haqqında heç bir məlumat verməyib, sadəcə təhlükəsizlik barədə məlumat verib. [Rule: Operator konkret rəqəmsal məlumat verib]"
+      },
+      "KR2.4": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Operator müştərinin müraciətini düzgün qeydə alır və təyinatı üzrə yönləndirir, müştərinin məlumatlarını təhlükəsiz şəkildə qeydə alır və lazımi kömək göstərir. [Rule: Yönləndirmə/qeydiyyat sözləri: ['şöbə', 'nömrəniz']]"
+      },
+      "KR2.5": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Operator daxili məlumatları müştəriyə bildirmir, kənar səslər yoxdur və peşəkar şəkildə danışıq aparır."
+      }
+    }
+  },
+  {
+    "dataset_id": "005_pii_leak_ignored",
+    "criteria": {
+      "KR2.1": {
+        "expected": 1,
+        "predicted": 3,
+        "exact": false,
+        "reasoning": "Operator müştəriyə fəal kömək edir, operativ cavab verir və optimal həll yolu tapır."
+      },
+      "KR2.2": {
+        "expected": 2,
+        "predicted": 3,
+        "exact": false,
+        "reasoning": "Operator müştərinin sualını diqqətlə dinləyib, mahiyyəti üzrə cavab verib, artıq suallar verməyib və zəngi süni uzatmayıb."
+      },
+      "KR2.3": {
+        "expected": 2,
+        "predicted": 0,
+        "exact": false,
+        "reasoning": "Operator müştəriyə şirkətin məhsul və xidmətləri haqqında heç bir məlumat vermədi."
+      },
+      "KR2.4": {
+        "expected": 2,
+        "predicted": 3,
+        "exact": false,
+        "reasoning": "Müştərinin müraciəti təyinatı üzrə yönləndirilib, məlumatlar düzgün qeydə alınıb və ödəniş prosesi uğurla həyata keçirilib."
+      },
+      "KR2.5": {
+        "expected": 0,
+        "predicted": 3,
+        "exact": false,
+        "reasoning": "Transkriptdə daxili məlumat, şəxsi fikir və ya kənar səslər yoxdur."
+      }
+    }
+  },
+  {
+    "dataset_id": "006_callback_failure",
+    "criteria": {
+      "KR2.1": {
+        "expected": 1,
+        "predicted": 0,
+        "exact": false,
+        "reasoning": "Operator müştəriyə fəal kömək etmədi, uzun müddət gözlətdi və optimal həll yolu tapmağa çalışmadı."
+      },
+      "KR2.2": {
+        "expected": 2,
+        "predicted": 0,
+        "exact": false,
+        "reasoning": "Operator müştərinin sualına cavab vermir, səhv məlumat verir və zəngi süni uzadır. [Rule: Cavabsız sual: 'Bu nə xidmətdir?!']"
+      },
+      "KR2.3": {
+        "expected": 1,
+        "predicted": 0,
+        "exact": false,
+        "reasoning": "Operator müştəriyə modem dəyişmək haqqında heç bir konkret məlumat vermədi, sadəcə sistem yavaşdır deyə müştəriyə gözləməyə məcbur etdi."
+      },
+      "KR2.4": {
+        "expected": 1,
+        "predicted": 1,
+        "exact": true,
+        "reasoning": "Operator müştərinin müraciətini təyinatı üzrə yönləndirmir, sadəcə sabah yenidən zəng etməyi tövsiyə edir."
+      },
+      "KR2.5": {
+        "expected": 1,
+        "predicted": 0,
+        "exact": false,
+        "reasoning": "Operator 'sistem yavaşdır' deyərək daxili məlumatı müştəriyə bildirdi [Rule: Şübhəli ifadə: 'sistem yavaşdır']"
+      }
+    }
+  },
+  {
+    "dataset_id": "007_code_switching_russian",
+    "criteria": {
+      "KR2.1": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Operator müştəriyə fəal kömək edir, operativ cavab verir və optimal həll yolu tapmağa çalışır."
+      },
+      "KR2.2": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Operator müştərinin sualını diqqətlə dinləyib, mahiyyəti üzrə cavab verib, lazımsız suallar vermədən və zəngi uzatmadan tələbatı tam formalaşdırıb."
+      },
+      "KR2.3": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Operator müştərinin suallarına cavab verərkən konkret rəqəmsal məlumatlar verir, məsələn, '200 Mbps internet və 200 kanal, 50 manat' və '100 Mbps və 120 kanal, 30 manat' kimi dəqiq məlumatlar verir. [Rule: Operator konkret rəqəmsal məlumat verib]"
+      },
+      "KR2.4": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Operator müştərinin müraciətini təyinatı üzrə yönləndirib, məlumatları düzgün qeydə alıb və texnikin gəlişini təyin edib. [Rule: Yönləndirmə/qeydiyyat sözləri: ['texnik', 'nömrəniz']]"
+      },
+      "KR2.5": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Transkriptdə daxili məlumat, şəxsi fikir və ya kənar səslər yoxdur."
+      }
+    }
+  },
+  {
+    "dataset_id": "008_system_error",
+    "criteria": {
+      "KR2.1": {
+        "expected": 3,
+        "predicted": 2,
+        "exact": false,
+        "reasoning": "Operator müştəriyə kömək edir, lakin sistem işləmədiyindən ləng reaksiya verir və optimal həll yolu tapmağa çalışır. [Rule: Rədd edici: 'bilmirəm']"
+      },
+      "KR2.2": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Operator müştərinin sualını diqqətlə dinləyib, mahiyyəti üzrə cavab verib və alternativ həll təklif edib."
+      },
+      "KR2.3": {
+        "expected": 3,
+        "predicted": 2,
+        "exact": false,
+        "reasoning": "Operator mobil tətbiq haqqında ümumi məlumat verdi, lakin qiymət və ya xidmət şərtləri haqqında konkret məlumat vermədi. [Rule: Operator konkret rəqəmsal məlumat verib]"
+      },
+      "KR2.4": {
+        "expected": 3,
+        "predicted": 1,
+        "exact": false,
+        "reasoning": "Operator müştəriyə alternativ həll təklif edir, lakin texniki problemin həllini təklif etmir və ya texnikə yönləndirmir. [Rule: Yönləndirmə/qeydiyyat sözləri: ['texnik']]"
+      },
+      "KR2.5": {
+        "expected": 3,
+        "predicted": 0,
+        "exact": false,
+        "reasoning": "Operator daxili texniki problemləri müştəriyə bildirdi, həmçinin 'bilmirəm' ifadəsini işlətdi, bu da daxili məlumatın müştəriyə açılmasını göstərir. [Rule: Şübhəli ifadə: 'bilmirəm']"
+      }
+    }
+  },
+  {
+    "dataset_id": "009_ideal_billing_inquiry",
+    "criteria": {
+      "KR2.1": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Operator müştəriyə fəal kömək edir, suallara tez və ətraflı cavab verir, optimal həll yolu tapmağa çalışır."
+      },
+      "KR2.2": {
+        "expected": 3,
+        "predicted": 2,
+        "exact": false,
+        "reasoning": "Operator müştərinin sualını cavablayır, lakin əlavə sual verməklə zəngi bir qədər uzadır."
+      },
+      "KR2.3": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Operator müştəriyə konkret rəqəmsal məlumat verir, məsələn, paket və əlavə xidmətlərin dəyərini göstərir. [Rule: Operator konkret rəqəmsal məlumat verib]"
+      },
+      "KR2.4": {
+        "expected": 3,
+        "predicted": 1,
+        "exact": false,
+        "reasoning": "Müştəri fakturasını yoxlamaq istəyir, lakin operator müştərini təyinatı üzrə yönləndirmir, ancaq müştərinin məlumatını qeydə alır və cavab verir. [Rule: Yönləndirmə/qeydiyyat sözləri: ['nömrəniz']]"
+      },
+      "KR2.5": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Operator daxili məlumat bildirilmir, kənar səslər yoxdur, peşəkar davranış və etiket qaydalarına əməl edir."
+      }
+    }
+  },
+  {
+    "dataset_id": "010_ideal_upgrade_request",
+    "criteria": {
+      "KR2.1": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Operator müştəriyə fəal kömək edir, operativ cavab verir və optimal həll yolu tapır."
+      },
+      "KR2.2": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Operator müştərinin sualını diqqətlə dinləyib, mahiyyəti üzrə cavab verib və lazımsız suallar vermədən tələbatı tam formalaşdırmışdır."
+      },
+      "KR2.3": {
+        "expected": 3,
+        "predicted": 2,
+        "exact": false,
+        "reasoning": "Operator müştəriyə Premium 200 Mbps paket haqqında məlumat verib, amma qiymət və digər şərtlər barədə məlumat verməyib. [Rule: Operator konkret rəqəmsal məlumat verib]"
+      },
+      "KR2.4": {
+        "expected": 3,
+        "predicted": 1,
+        "exact": false,
+        "reasoning": "Müştəri paketini dəyişmək istəyir, lakin operator müştəriyə texnik şöbəyə və ya digər təyinatlı şöbəyə yönləndirmir, sadəcə paket dəyişikliyi ilə məşğul olur."
+      },
+      "KR2.5": {
+        "expected": 3,
+        "predicted": 3,
+        "exact": true,
+        "reasoning": "Transkriptdə daxili məlumat, şəxsi fikir və ya kənar səslər yoxdur, operator peşəkar davranıb."
+      }
+    }
+  }
+]
